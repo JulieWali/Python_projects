@@ -1,0 +1,26 @@
+#1. Import os and shutil to be able to move/create files
+import os, shutil
+path = r"C:/Users/jwali/Documents/MYSQL PRACTICE/TEST Automate/"
+
+#2. List all the files 
+name_of_all_files=os.listdir(path)
+
+#3. Create a list with the names of your folder 
+folder_names = ["images folder","pdf folder","spreadsheet folder"]
+
+#4. For each folder, if it hasn't already be created, create it
+for each in folder_names:
+    folder_path = os.path.join(path,each)
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+ 
+#5. For each file (jpg, pdf, csv, png), if it is not in the specific folder, move it        
+for eeach in name_of_all_files:
+    if ".png" in eeach and not os.path.exists(path + "images folder/" + eeach):
+        shutil.move(path + eeach, path + "images folder/" + eeach)
+    if ".jpg" in eeach and not os.path.exists(path + "images folder/" + eeach):
+        shutil.move(path + eeach, path + "images folder/" + eeach)
+    if ".pdf" in eeach and not os.path.exists(path + "pdf folder/" + eeach):
+        shutil.move(path + eeach, path + "pdf folder/" + eeach)
+    if ".csv" in eeach and not os.path.exists(path + "spreadsheet folder/" + eeach):
+        shutil.move(path + eeach, path + "spreadsheet folder/" + eeach) 
